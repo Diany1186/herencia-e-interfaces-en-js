@@ -2,6 +2,18 @@ export class Cuenta {
     #cliente;
     #saldo;
 
+    constructor (cliente,numero, agencia, saldo) {
+
+        if (this.constructor == Cuenta) {//verifica que no se esté instanciando un objeto de tipo cuenta, es decir la convierte en una clase abstracta
+            throw new Error("No se debe instanciar objetos de la clase Cuenta");//muestra el error y detiene la ejecución si se quiere acceder al constructor de cuenta directamente
+        }
+
+        this.numero = numero;
+        this.agencia = agencia;
+        this.#cliente = cliente;
+        this.#saldo = saldo;
+    }
+    
     set cliente(valor) {
         if (valor instanceof Cliente)//evita que al atributo cliente se le pueda asignar otro valor que no sea un objeto Cliente
             this.#cliente = valor;
@@ -9,13 +21,6 @@ export class Cuenta {
 
     get cliente() {
         return this.#cliente;
-    }
-
-    constructor (cliente,numero, agencia, saldo) {
-        this.numero = numero;
-        this.agencia = agencia;
-        this.#cliente = cliente;
-        this.#saldo = saldo;
     }
 
     depositoEnCuenta(valor) {
