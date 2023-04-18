@@ -1,21 +1,20 @@
 //Definición de clases
 import {Cliente} from "./Cliente.js";
-import {CuentaCorriente} from "./CuentaCorriente.js";
-import {CuentaAhorro } from "./CuentaAhorro.js";
-import { Cuenta } from "./Cuenta.js";
-import { CuentaNomina } from "./CuentaNomina.js";
+import { Empleado } from "./Empleados/Empleado.js";
+import { Director } from "./Empleados/Director.js";
+import { Gerente } from "./Empleados/Gerente.js";
+import { SistemaAutenticacion } from "./SistemaAutenticacion.js";
 
 const cliente = new Cliente("Leonardo","1231231231","1231231");
-const cuentaLeonardo = new CuentaCorriente(cliente,"1","001");
+cliente.asignarClave("11101");
+console.log(SistemaAutenticacion.login(cliente,"1111"));
+//const cliente2 = new Cliente("Sofía","1231231232","1231232");
 
-const cliente2 = new Cliente("Sofía","1231231232","1231232");
-const cuentaSofia = new CuentaCorriente(cliente2,"2","002");
+const empleado = new Empleado("Juan Perez","1234561231",1000);
+empleado.asignarClave("12345");
+const gerente = new Gerente("Pedro Rivas","1234561232",1200);
+gerente.asignarClave("12312")
+const director = new Director("Elena Moreno","1234561233",1500);
 
-const cuentaAhorroLeonardo = new CuentaAhorro(cliente, "9985","001",0);
-
-const cuentaNominaLeonardo = new CuentaNomina(cliente, "9986","001",100);
-cuentaNominaLeonardo.depositoEnCuenta(150);
-console.log(cuentaNominaLeonardo.verSaldo());
-
-cuentaNominaLeonardo.retirarDeCuenta(50);
-console.log(cuentaNominaLeonardo.verSaldo());
+console.log(SistemaAutenticacion.login(empleado,"12345"));
+console.log(SistemaAutenticacion.login(gerente,"12311"));
