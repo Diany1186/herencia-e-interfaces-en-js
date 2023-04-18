@@ -31,7 +31,8 @@ export class Cuenta {
     }
 
     retirarDeCuenta(valor) {
-        _retirarDeCuenta(valor,0);
+        //método abstracto, es decir existe su estructura pero no hace nada y muestra un error
+        throw new Error("Debe implementar el método retirarDeCuenta en su clase");
     }
 
     _retirarDeCuenta(valor,comision) {
